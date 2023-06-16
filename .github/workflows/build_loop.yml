@@ -28,6 +28,21 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
+  
+        
+          
+      # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        run: | 
+
+          # The patches start here
+
+          # Upload pod start to Nightscout, Updates both OmniKit (Eros) and OmniBLE (DASH)
+          curl https://raw.githubusercontent.com/loopnlearn/loopbuildscripts/main/patch/cage.patch | git apply
+
+          # SAGE: upload Dexcom sensor start to Nightscout
+          curl https://raw.githubusercontent.com/loopnlearn/loopbuildscripts/main/patch/g6g7_sage.patch | git apply
+                      
       
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
